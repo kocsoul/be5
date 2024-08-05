@@ -1,3 +1,4 @@
+import 'package:be5_cyc/components/buttons/intro_start.dart';
 import 'package:flutter/material.dart';
 
 class Intro extends StatefulWidget {
@@ -101,15 +102,7 @@ class IntroState extends State<Intro> {
                         );
                       } else {
                         // 마지막 페이지에 버튼 추가
-                        return Center(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              // 버튼을 눌렀을 때 수행할 동작
-                              // 예를 들어, 다음 페이지로 이동
-                            },
-                            child: const Text('시작하기'),
-                          ),
-                        );
+                        return const IntroStart();
                       }
                     },
                   ),

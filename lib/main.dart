@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           } else {
             // 사용자 정보가 있는 경우와 없는 경우에 따라 다른 페이지를 반환합니다.
             if (snapshot.data == true) {
-              return Apage();
+              return const Apage();
             } else {
               return const Intro();
             }
@@ -54,6 +54,7 @@ Future<bool> getUserInfo() async {
 
 // A 페이지
 class Apage extends StatelessWidget {
+  const Apage({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
