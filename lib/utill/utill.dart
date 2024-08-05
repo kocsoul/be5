@@ -12,3 +12,11 @@ void showCustomSnackBar(BuildContext context) {
   // 스낵바 표시
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
+
+//페이지 이동 함수
+void moveToPage(BuildContext context, Widget page) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => page),
+  );
+}
