@@ -15,18 +15,19 @@ class DrawerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const Divider(
-      color: Colors.grey, // 경계선 색상
+      color: Colors.black, // 경계선 색상
       thickness: 1.0, // 경계선 두께
     );
 
     return Container(
       width: MediaQuery.of(context).size.width * 0.8, // 드로어 너비 설정
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: Color.fromRGBO(252, 218, 82, 1),
         shape: BoxShape.rectangle, // 사각형 모양 설정
         borderRadius: BorderRadius.zero, // 모서리를 둥글게 하지 않음
       ),
       child: Drawer(
+        backgroundColor: const Color.fromRGBO(252, 218, 82, 1),
         child: ListView.builder(
           padding: const EdgeInsets.only(top: 120.0, left: 20.0, right: 20.0),
           itemCount: menuItems.length,
