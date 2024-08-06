@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 // SnackBar를 표시하는 함수
-void showCustomSnackBar(BuildContext context) {
-  const snackBar = SnackBar(
+void showCustomSnackBar(BuildContext context, {String? message}) {
+  // 문자열 보간을 사용하여 메시지 문자열 생성
+  final displayMessage = '${message ?? ''} 기능이 없습니다.';
+
+  final snackBar = SnackBar(
     content: Text(
-      '아직 기능이 없습니다.',
-      style: TextStyle(color: Colors.white),
-    ), // 메시지만 포함
+      displayMessage,
+      style: const TextStyle(color: Colors.white),
+    ),
   );
 
   // 스낵바 표시

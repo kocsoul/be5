@@ -1,5 +1,5 @@
+import 'package:be5_cyc/utill/utill.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -15,40 +15,60 @@ class Login extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Container(
-                margin: const EdgeInsets.only(
-                    top: 10.0), // Use margin instead of padding
-                child: ClipRRect(
-                  borderRadius:
-                      BorderRadius.circular(35.0), // Match button radius
-                  child: Image.asset(
-                    'assets/images/login/kakao.png',
-                    fit: BoxFit.cover,
-                    width: MediaQuery.of(context)
-                        .size
-                        .width, // Make the image cover the entire button
-                    height: 53,
-                    // Adjust height as needed
+              GestureDetector(
+                onTap: () {
+                  // Handle your onPressed logic here
+                  showCustomSnackBar(context, message: '카카오로그인');
+                  // You can navigate to another screen, show a dialog, etc.
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(
+                      top: 10.0), // Use margin instead of padding
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(35.0), // Match button radius
+                    child: Image.asset(
+                      'assets/images/login/kakao.png',
+                      fit: BoxFit.cover,
+                      width: MediaQuery.of(context)
+                          .size
+                          .width, // Make the image cover the entire button
+                      height: 50,
+                    ),
                   ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(
-                    top: 10.0), // Use margin instead of padding
-                child: ClipRRect(
-                  borderRadius:
-                      BorderRadius.circular(30.0), // Match button radius
-                  child: Image.asset(
-                    'assets/images/login/google.png',
-                    fit: BoxFit.cover,
-                    width: MediaQuery.of(context)
-                        .size
-                        .width, // Make the image cover the entire button
-                    height: 53,
-                    // Adjust height as needed
+              GestureDetector(
+                onTap: () {
+                  showCustomSnackBar(context, message: '구글로그인');
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(
+                      top: 20.0), // Use margin instead of padding
+                  child: ClipRRect(
+                    borderRadius:
+                        BorderRadius.circular(30.0), // Match button radius
+                    child: Image.asset(
+                      'assets/images/login/google.png',
+                      fit: BoxFit.cover,
+                      width: MediaQuery.of(context)
+                          .size
+                          .width, // Make the image cover the entire button
+                      height: 50,
+                      // Adjust height as needed
+                    ),
                   ),
                 ),
               ),
+              GestureDetector(
+                onTap: () {
+                  showCustomSnackBar(context, message: '건너뛰기');
+                },
+                child: Container(
+                  margin: const EdgeInsets.only(top: 10.0),
+                  child: const Text('로그인 건너뛰기'),
+                ),
+              )
             ],
           ),
         ),
