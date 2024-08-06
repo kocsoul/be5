@@ -7,15 +7,16 @@ class ButtonLayout extends StatelessWidget {
   final double width; // MediaQuery와 일관성을 유지하기 위해 num 대신 double 사용
   final Color backgroundColor;
   final Color foregroundColor;
+  final bool? border;
 
-  const ButtonLayout({
-    super.key,
-    required this.buttonText,
-    this.onPressed,
-    this.width = 10.0, // 기본 너비 오프셋
-    this.backgroundColor = const Color.fromRGBO(252, 218, 82, 1),
-    this.foregroundColor = Colors.black,
-  });
+  const ButtonLayout(
+      {super.key,
+      required this.buttonText,
+      this.onPressed,
+      this.width = 10.0, // 기본 너비 오프셋
+      this.backgroundColor = const Color.fromRGBO(252, 218, 82, 1),
+      this.foregroundColor = Colors.black,
+      this.border});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,12 @@ class ButtonLayout extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(50.0), // 둥근 모서리
+              side: (border ?? false) // null인 경우 기본값을 false로 설정
+                  ? const BorderSide(
+                      color: Colors.black, // 경계선 색상
+                      width: 0.5, // 경계선 두께
+                    )
+                  : BorderSide.none, // 경계선 없음
             ),
           ),
           child: Text(

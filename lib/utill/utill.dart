@@ -10,6 +10,7 @@ void showCustomSnackBar(BuildContext context, {String? message}) {
       displayMessage,
       style: const TextStyle(color: Colors.white),
     ),
+    duration: const Duration(seconds: 1),
   );
 
   // 스낵바 표시
