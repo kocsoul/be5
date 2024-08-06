@@ -1,3 +1,4 @@
+import 'package:be5_cyc/pages/character.dart';
 import 'package:be5_cyc/utill/utill.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +63,7 @@ class Login extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  showCustomSnackBar(context, message: '건너뛰기');
+                  moveToPage(context, const Character());
                 },
                 child: Container(
                   margin: const EdgeInsets.only(top: 10.0),
