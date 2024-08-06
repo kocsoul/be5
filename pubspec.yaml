@@ -22,4 +22,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/intro/phone.png
+    - assets/images/login/kakao.png
+    - assets/images/login/google.png
+
 
