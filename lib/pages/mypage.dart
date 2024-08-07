@@ -170,6 +170,52 @@ class ProfileFormState extends State<ProfileForm> {
     );
   }
 
+  void deleteMember() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: Colors.white,
+          title: const Text(
+            '회원 탈퇴',
+            style: TextStyle(
+                fontSize: 19, fontWeight: FontWeight.w900, color: Colors.red),
+            textAlign: TextAlign.center,
+          ),
+          content: const Padding(
+              padding: EdgeInsets.symmetric(vertical: 70.0),
+              child: Text(
+                '회원을 탈퇴하시겠습니까?\n회원을 탈퇴하시면\n이전 정보는 사라지고\n복구할 수 없습니다.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 19),
+              )),
+          actions: [
+            ButtonLayout(
+              buttonText: '회원 탈퇴',
+              foregroundColor: Colors.red,
+              backgroundColor: Colors.white,
+              border: true,
+              onPressed: () {
+                // Clear focus and close dialog
+                Navigator.of(context).pop();
+                FocusScope.of(context).unfocus();
+              },
+            ),
+            const SizedBox(height: 10),
+            ButtonLayout(
+              buttonText: '닫기',
+              onPressed: () {
+                // Clear focus and close dialog
+                Navigator.of(context).pop();
+                FocusScope.of(context).unfocus();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -249,6 +295,7 @@ class ProfileFormState extends State<ProfileForm> {
             border: true,
             onPressed: () {
               // 회원탈퇴 로직 추가
+              deleteMember();
             },
           ),
           const SizedBox(
