@@ -1,3 +1,4 @@
+import 'package:be5_cyc/pages/my_character.dart';
 import 'package:flutter/material.dart';
 import 'package:be5_cyc/components/buttons/button_layout.dart';
 import 'package:be5_cyc/components/menubar/drawer.dart';
@@ -61,7 +62,7 @@ class Character extends StatelessWidget {
                             border: true,
                             onPressed: () {
                               debugPrint("보관함 버튼 클릭됨");
-                              showCustomSnackBar(context, message: '보관함');
+                              moveToPage(context, const MyCharacter());
                             },
                             width: 354.5,
                           ),

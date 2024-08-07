@@ -1,4 +1,5 @@
 import 'package:be5_cyc/pages/camera.dart';
+import 'package:be5_cyc/pages/my_character.dart';
 import 'package:be5_cyc/pages/mypage.dart';
 // import 'package:be5_cyc/pages/edit_profile.dart'; // EditProfilePage 파일 추가
 // import 'package:be5_cyc/pages/storage.dart'; // StoragePage 파일 추가
@@ -51,7 +52,7 @@ class DrawerApp extends StatelessWidget {
       case 'CameraPage':
         return const CameraPage(); // CameraPage의 인스턴스를 반환
       case 'StoragePage':
-        return const CameraPage(); // CameraPage의 인스턴스를 반환
+        return const MyCharacter(); // CameraPage의 인스턴스를 반환
       case 'PaymentHistoryPage':
         return const CameraPage(); // CameraPage의 인스턴스를 반환
       default:
