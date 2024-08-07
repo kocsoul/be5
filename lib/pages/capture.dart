@@ -11,10 +11,10 @@ class Capture extends StatefulWidget {
   const Capture({super.key, required this.imagePath});
 
   @override
-  _CaptureState createState() => _CaptureState();
+  CaptureState createState() => CaptureState();
 }
 
-class _CaptureState extends State<Capture> {
+class CaptureState extends State<Capture> {
   bool _isFlipped = false; // 이미지 좌우반전 상태를 추적하는 변수
 
   // 이미지 좌우반전 상태를 변경하는 함수
