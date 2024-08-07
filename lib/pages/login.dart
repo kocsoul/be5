@@ -31,10 +31,8 @@ class Login extends StatelessWidget {
                     child: Image.asset(
                       'assets/images/login/kakao.png',
                       fit: BoxFit.cover,
-                      width: MediaQuery.of(context)
-                          .size
-                          .width, // Make the image cover the entire button
-                      height: 50,
+                      width: 354.5, // Make the image cover the entire button
+                      height: 53,
                     ),
                   ),
                 ),
@@ -52,10 +50,8 @@ class Login extends StatelessWidget {
                     child: Image.asset(
                       'assets/images/login/google.png',
                       fit: BoxFit.cover,
-                      width: MediaQuery.of(context)
-                          .size
-                          .width, // Make the image cover the entire button
-                      height: 50,
+                      width: 354.5, // Make the image cover the entire button
+                      height: 53,
                       // Adjust height as needed
                     ),
                   ),

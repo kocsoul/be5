@@ -4,46 +4,52 @@ import 'package:flutter/material.dart';
 class ButtonLayout extends StatelessWidget {
   final String buttonText;
   final VoidCallback? onPressed;
-  final double width; // MediaQuery와 일관성을 유지하기 위해 num 대신 double 사용
+  final double? width;
+  final double? height;
   final Color backgroundColor;
   final Color foregroundColor;
   final bool? border;
 
-  const ButtonLayout(
-      {super.key,
-      required this.buttonText,
-      this.onPressed,
-      this.width = 10.0, // 기본 너비 오프셋
-      this.backgroundColor = const Color.fromRGBO(252, 218, 82, 1),
-      this.foregroundColor = Colors.black,
-      this.border});
+  const ButtonLayout({
+    super.key,
+    required this.buttonText,
+    this.onPressed,
+    this.width,
+    this.height,
+    this.backgroundColor = const Color.fromRGBO(252, 218, 82, 1),
+    this.foregroundColor = Colors.black,
+    this.border,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        width: MediaQuery.of(context).size.width - width, // 너비 오프셋 사용
+        width: width ??
+            MediaQuery.of(context).size.width -
+                38, // null 병합연산자 -> a ?? b -> a가 있으면 a, a가 null이면 b
+        height: height ?? 53.0,
         child: ElevatedButton(
           onPressed: onPressed ?? () => showCustomSnackBar(context),
           style: ElevatedButton.styleFrom(
-            backgroundColor: backgroundColor, // 전달받은 배경색 사용
-            foregroundColor: foregroundColor, // 전달받은 전경색 사용
+            backgroundColor: backgroundColor,
+            foregroundColor: foregroundColor,
             padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(50.0), // 둥근 모서리
-              side: (border ?? false) // null인 경우 기본값을 false로 설정
+              borderRadius: BorderRadius.circular(50.0),
+              side: (border ?? false)
                   ? const BorderSide(
-                      color: Colors.black, // 경계선 색상
-                      width: 0.5, // 경계선 두께
+                      color: Colors.black,
+                      width: 0.5,
                     )
-                  : BorderSide.none, // 경계선 없음
+                  : BorderSide.none,
             ),
           ),
           child: Text(
-            buttonText, // 전달받은 버튼 텍스트 사용
+            buttonText,
             style: const TextStyle(
-              fontSize: 20, // 폰트 크기
-              fontWeight: FontWeight.w300, // 폰트 굵기
+              fontSize: 20,
+              fontWeight: FontWeight.w300,
             ),
           ),
         ),

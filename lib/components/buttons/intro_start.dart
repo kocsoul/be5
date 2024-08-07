@@ -8,11 +8,13 @@ class IntroStart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ButtonLayout(
-      buttonText: '시작하기',
-      onPressed: () {
-        moveToPage(context, const Login());
-      },
+    return Center(
+      child: ButtonLayout(
+          buttonText: '시작하기',
+          onPressed: () {
+            moveToPage(context, const Login());
+          },
+          width: 354.5),
     );
   }
 }
