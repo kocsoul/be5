@@ -51,13 +51,13 @@ class _CaptureState extends State<Capture> {
           if (widget.imagePath.isNotEmpty)
             SizedBox(
               width: 400,
-              height: 400, // 원하는 높이 설정
+              height: 500, // 원하는 높이 설정
               child: Stack(
                 children: [
                   ClipRect(
                     child: SizedBox(
                       width: 400,
-                      height: 400,
+                      height: 500,
                       child: OverflowBox(
                         alignment: Alignment.center,
                         child: FittedBox(
