@@ -1,4 +1,4 @@
-import 'package:be5_cyc/pages/intro.dart';
+import 'package:be5_cyc/pages/intro.dart'; // Import하는 파일이 존재하는지 확인
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
           } else {
             // 사용자 정보가 있는 경우와 없는 경우에 따라 다른 페이지를 반환합니다.
             if (snapshot.data == true) {
-              return const Apage();
+              return const Apage(); // 사용자 정보가 있으면 Apage로 이동
             } else {
-              return const Intro();
+              return const Intro(); // 사용자 정보가 없으면 Intro로 이동
             }
           }
         },
@@ -58,8 +58,8 @@ class Apage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('B 페이지')),
-      body: const Center(child: Text('B 페이지에 오신 것을 환영합니다')),
+      appBar: AppBar(title: const Text('A 페이지')), // 제목을 A 페이지로 수정
+      body: const Center(child: Text('A 페이지에 오신 것을 환영합니다')), // 본문도 A 페이지로 수정
     );
   }
 }

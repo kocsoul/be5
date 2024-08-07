@@ -35,35 +35,39 @@ class Character extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  bottom: MediaQuery.of(context).size.height * 0.45,
-                  left: 0,
-                  right: 0,
-                  child: ButtonLayout(
-                    buttonText: '촬영하기',
-                    onPressed: () {
-                      debugPrint("촬영하기 버튼 클릭됨");
-                      moveToPage(
-                          context, const CameraPage()); // Pass the camera here
-                      // showCustomSnackBar(context);
-                    },
-                    width: 354.5,
-                  ),
-                ),
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height * 0.35,
-                  left: 0,
-                  right: 0,
-                  child: ButtonLayout(
-                    buttonText: '보관함',
-                    backgroundColor: Colors.white,
-                    border: true,
-                    onPressed: () {
-                      debugPrint("보관함 버튼 클릭됨");
-                      showCustomSnackBar(context, message: '보관함');
-                    },
-                    width: 354.5,
-                  ),
-                ),
+                    top: MediaQuery.of(context).size.height * 0.25,
+                    left: 0,
+                    right: 0,
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 10.0),
+                          child: ButtonLayout(
+                            buttonText: '촬영하기',
+                            onPressed: () {
+                              debugPrint("촬영하기 버튼 클릭됨");
+                              moveToPage(context,
+                                  const CameraPage()); // Pass the camera here
+                              // showCustomSnackBar(context);
+                            },
+                            width: 354.5,
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 10.0),
+                          child: ButtonLayout(
+                            buttonText: '보관함',
+                            backgroundColor: Colors.white,
+                            border: true,
+                            onPressed: () {
+                              debugPrint("보관함 버튼 클릭됨");
+                              showCustomSnackBar(context, message: '보관함');
+                            },
+                            width: 354.5,
+                          ),
+                        )
+                      ],
+                    )),
               ],
             ),
           ),
