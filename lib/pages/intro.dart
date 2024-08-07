@@ -95,6 +95,7 @@ class IntroState extends State<Intro> {
                     },
                   ),
                 ),
+                //페이지네이션 인디케이터 버튼
                 Padding(
                   padding: const EdgeInsets.only(bottom: 50.0),
                   child: Row(

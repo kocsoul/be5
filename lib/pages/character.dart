@@ -35,7 +35,7 @@ class Character extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  bottom: MediaQuery.of(context).size.height * 0.37,
+                  bottom: MediaQuery.of(context).size.height * 0.45,
                   left: 0,
                   right: 0,
                   child: ButtonLayout(
@@ -46,10 +46,11 @@ class Character extends StatelessWidget {
                           context, const CameraPage()); // Pass the camera here
                       // showCustomSnackBar(context);
                     },
+                    width: 354.5,
                   ),
                 ),
                 Positioned(
-                  bottom: MediaQuery.of(context).size.height * 0.27,
+                  bottom: MediaQuery.of(context).size.height * 0.35,
                   left: 0,
                   right: 0,
                   child: ButtonLayout(
@@ -60,6 +61,7 @@ class Character extends StatelessWidget {
                       debugPrint("보관함 버튼 클릭됨");
                       showCustomSnackBar(context, message: '보관함');
                     },
+                    width: 354.5,
                   ),
                 ),
               ],
