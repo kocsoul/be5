@@ -8,12 +8,6 @@ class MyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 시스템 UI 오버레이를 설정하여 앱이 전체 화면을 사용할 수 있도록 설정
-    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    //   statusBarColor: Colors.transparent, // 상태바 색상을 투명하게 설정
-    //   statusBarIconBrightness: Brightness.dark, // 상태바 아이콘 색상 설정
-    // ));
-
     return GestureDetector(
       onTap: () {
         // Unfocus all text fields when tapping outside
