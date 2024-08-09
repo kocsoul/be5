@@ -19,7 +19,7 @@ class Login extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   // Handle your onPressed logic here
-                  showCustomSnackBar(context, message: '카카오로그인');
+                  showSnackBar(context, message: '카카오로그인');
                   // You can navigate to another screen, show a dialog, etc.
                 },
                 child: Container(
@@ -39,7 +39,7 @@ class Login extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  showCustomSnackBar(context, message: '구글로그인');
+                  showSnackBar(context, message: '구글로그인');
                 },
                 child: Container(
                   margin: const EdgeInsets.only(
@@ -59,7 +59,7 @@ class Login extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
-                  moveToPage(context, const Character());
+                  moveToPage(context, const CharacterPage());
                 },
                 child: Container(
                   margin: const EdgeInsets.only(top: 10.0),

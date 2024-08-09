@@ -37,7 +37,7 @@ class ButtonLayout extends StatelessWidget {
         width: width ?? MediaQuery.of(context).size.width - 38,
         height: height ?? 53.0,
         child: ElevatedButton(
-          onPressed: onPressed ?? () => showCustomSnackBar(context),
+          onPressed: onPressed ?? () => notHaveFunction(context),
           style: ElevatedButton.styleFrom(
             backgroundColor: backgroundColor,
             foregroundColor: foregroundColor,

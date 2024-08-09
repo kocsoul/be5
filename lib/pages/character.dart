@@ -5,8 +5,8 @@ import 'package:be5_cyc/components/menubar/drawer.dart';
 import 'package:be5_cyc/pages/camera.dart';
 import 'package:be5_cyc/utill/utill.dart';
 
-class Character extends StatelessWidget {
-  const Character({super.key});
+class CharacterPage extends StatelessWidget {
+  const CharacterPage({super.key});
 
   @override
   Widget build(BuildContext context) {

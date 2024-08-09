@@ -163,7 +163,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
                 backgroundColor: Colors.white,
                 foregroundColor: Colors.black,
                 onPressed: () {
-                  moveToPage(context, const Character());
+                  moveToPage(context, const CharacterPage());
                 },
               ),
             ],

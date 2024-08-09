@@ -1,28 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:be5_cyc/components/buttons/button_layout.dart';
 import 'package:be5_cyc/components/menubar/drawer.dart';
 import 'package:be5_cyc/pages/character.dart';
+import 'package:be5_cyc/provider/character_provider.dart';
 import 'package:be5_cyc/utill/utill.dart';
-import 'package:flutter/material.dart';
 
-class MyCharacter extends StatelessWidget {
+class MyCharacter extends StatefulWidget {
   const MyCharacter({super.key});
 
   @override
+  State<MyCharacter> createState() => _MyCharacterState();
+}
+
+class _MyCharacterState extends State<MyCharacter> {
+  @override
   Widget build(BuildContext context) {
+    final characterProvider = Provider.of<CharacterProvider>(context);
+    final characters = characterProvider.characters;
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent, // 앱 바 배경 투명
-        elevation: 0, // 앱 바 그림자 제거
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         actions: <Widget>[
           Builder(
             builder: (context) {
               return IconButton(
-                icon: const Icon(Icons.menu),
+                icon: const Icon(Icons.menu, color: Colors.black),
                 onPressed: () {
-                  // Unfocus all text fields
                   FocusScope.of(context).unfocus();
-                  debugPrint("햄버거 버튼 클릭됨");
+                  debugPrint("Menu button clicked");
                   Scaffold.of(context).openEndDrawer();
                 },
               );
@@ -31,45 +40,114 @@ class MyCharacter extends StatelessWidget {
         ],
       ),
       endDrawer: DrawerApp(),
-      body: const Padding(
-          padding: EdgeInsets.only(left: 38.0, right: 38.0), child: Storeage()),
+      body: characters.isNotEmpty
+          ? buildCharacterGrid(characters, characterProvider)
+          : buildNoCharacterWidget(context),
     );
   }
-}
 
-class Storeage extends StatefulWidget {
-  const Storeage({super.key});
-
-  @override
-  State<Storeage> createState() => _StoreageState();
-}
-
-class _StoreageState extends State<Storeage> {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      // Wrap with Center widget
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // Center items vertically
-        children: [
-          const Center(
-            child: Text(
-              '보관중인 캐릭터가 없습니다.',
-              style: TextStyle(fontSize: 20),
+  Widget buildCharacterGrid(
+      List<Character> characters, CharacterProvider provider) {
+    return Column(
+      children: [
+        const SizedBox(height: 20),
+        const Text(
+          '저장된 캐릭터',
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 20),
+        Expanded(
+          child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 1,
+              mainAxisSpacing: 1,
+              childAspectRatio: 1,
             ),
+            itemCount: characters.length,
+            itemBuilder: (context, index) {
+              final character = characters[index];
+              return GestureDetector(
+                onTap: () =>
+                    showDeleteDialog(context, provider, character, index),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 150,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: const Color.fromRGBO(252, 218, 82, 1),
+                            width: 3),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Stack(
+                          children: [
+                            Image.asset(character.body, fit: BoxFit.cover),
+                            Image.asset(character.arm, fit: BoxFit.cover),
+                            Image.asset(character.face, fit: BoxFit.cover),
+                            Image.asset(character.eye, fit: BoxFit.cover),
+                            Image.asset(character.mouth, fit: BoxFit.cover),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
-          const SizedBox(
-            height: 20,
-          ),
-          ButtonLayout(
-              buttonText: '홈으로',
-              backgroundColor: Colors.white,
-              border: true,
+        ),
+      ],
+    );
+  }
+
+  void showDeleteDialog(BuildContext context, CharacterProvider provider,
+      Character character, int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('삭제 확인'),
+          content: const Text('이 캐릭터를 삭제하시겠습니까?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('취소'),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            TextButton(
+              child: const Text('삭제'),
               onPressed: () {
-                moveToPage(context, const Character());
-              })
-        ],
-      ),
+                provider.removeCharacter(index);
+                Navigator.of(context).pop();
+                setState(() {}); // UI 갱신
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget buildNoCharacterWidget(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          '보관중인 캐릭터가 없습니다.',
+          style: TextStyle(fontSize: 20),
+        ),
+        const SizedBox(height: 20),
+        ButtonLayout(
+          buttonText: '홈으로',
+          backgroundColor: Colors.white,
+          border: true,
+          onPressed: () => moveToPage(context, const CharacterPage()),
+        ),
+      ],
     );
   }
 }
