@@ -1,4 +1,5 @@
 import 'package:be5_cyc/pages/camera.dart';
+import 'package:be5_cyc/pages/characterset.dart';
 import 'package:be5_cyc/pages/my_character.dart';
 import 'package:be5_cyc/pages/mypage.dart';
 import 'package:be5_cyc/pages/receipt.dart';
@@ -33,6 +34,11 @@ class DrawerApp extends StatelessWidget {
       'page': 'PaymentHistoryPage',
     },
     {
+      'icon': Icons.child_care,
+      'title': '임시페이지',
+      'page': 'game',
+    },
+    {
       'icon': Icons.exit_to_app,
       'title': '로그아웃',
       'page': null,
@@ -41,7 +47,7 @@ class DrawerApp extends StatelessWidget {
 
   void _handleLogout(BuildContext context) {
     // 로그아웃 로직 구현
-    showCustomSnackBar(context, message: "로그아웃되었습니다.");
+    showSnackBar(context, message: "로그아웃되었습니다.");
     // 추가적인 로그아웃 처리가 필요하면 여기에 작성
   }
 
@@ -56,6 +62,8 @@ class DrawerApp extends StatelessWidget {
         return const MyCharacter(); // CameraPage의 인스턴스를 반환
       case 'PaymentHistoryPage':
         return const Receipt(); // CameraPage의 인스턴스를 반환
+      case 'game':
+        return CharacterSet(); // CameraPage의 인스턴스를 반환
       default:
         return Container(); // 기본 빈 페이지 반환
     }

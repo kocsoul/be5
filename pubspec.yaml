@@ -17,6 +17,7 @@ dependencies:
   permission_handler: ^10.2.0
   image: ^4.0.15
   image_picker: ^0.8.5+3 
+  provider: ^6.0.5
   
 dev_dependencies:
   flutter_test:
@@ -30,5 +31,11 @@ flutter:
     - assets/images/intro/phone.png
     - assets/images/login/kakao.png
     - assets/images/login/google.png
+    - assets/images/front/
+    - assets/images/front/face/ 
+    - assets/images/front/mouth/ 
+    - assets/images/front/body/ 
+    - assets/images/front/arms/ 
+    - assets/images/front/eyes/ 
 
 

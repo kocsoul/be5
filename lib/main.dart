@@ -1,8 +1,19 @@
-import 'package:be5_cyc/pages/intro.dart'; // Import하는 파일이 존재하는지 확인
+import 'package:be5_cyc/pages/intro.dart';
+import 'package:be5_cyc/provider/character_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+// 메인 함수
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CharacterProvider()),
+        // 다른 프로바이더가 필요하면 여기에 추가합니다.
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -11,25 +22,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: '통합된 앱',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white, // 기본 스캐폴드 배경색 설정
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white,
       ),
       home: FutureBuilder<bool>(
         future: getUserInfo(),
         builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            // Future가 완료될 때까지 로딩 표시기를 보여줍니다.
             return const Scaffold(
               body: Center(child: CircularProgressIndicator()),
             );
           } else if (snapshot.hasError) {
-            // 에러가 발생했을 때 처리합니다.
             return const Scaffold(
               body: Center(child: Text('오류가 발생했습니다.')),
             );
           } else {
-            // 사용자 정보가 있는 경우와 없는 경우에 따라 다른 페이지를 반환합니다.
             if (snapshot.data == true) {
               return const Apage(); // 사용자 정보가 있으면 Apage로 이동
             } else {
@@ -55,6 +64,7 @@ Future<bool> getUserInfo() async {
 // A 페이지
 class Apage extends StatelessWidget {
   const Apage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
